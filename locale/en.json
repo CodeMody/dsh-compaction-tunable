@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Auto-compaction trigger",
+    "description": "Choose when DSH starts automatic context compaction, from the Plugins page."
+  }
+}
