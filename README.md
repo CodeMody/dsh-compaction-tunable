@@ -1,6 +1,5 @@
 # Auto-compaction trigger
 
-Source: <https://github.com/CodeMody/dsh-compaction-tunable>
 
 A DSH profile bundle that adds a **Plugins → Auto-compaction trigger** settings
 page, so you can choose the input-token level at which automatic context
