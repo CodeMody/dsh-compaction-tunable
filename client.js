@@ -1,10 +1,10 @@
 window.__ModuleLoader__.load({
-  id: '@local/dsh-compaction-tunable',
+  id: '@codemody/dsh-compaction-tunable',
   factory: (require) => {
     const React = require('react')
     const h = React.createElement
 
-    const PACKAGE = '@local/dsh-compaction-tunable'
+    const PACKAGE = '@codemody/dsh-compaction-tunable'
     const NAMESPACE = 'compaction-policy'
     const NS = 'compactionTunable'
 

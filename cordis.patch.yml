@@ -21,7 +21,7 @@
 # the web-app's own patch layer, not relative to a profile bundle's copy.
 - insert:
     - id: compaction-policy
-      name: '@local/dsh-compaction-tunable'
+      name: '@codemody/dsh-compaction-tunable'
 
 - id: preset-standard
   name: '@deepseek-ai/dsh-agent-preset'
@@ -95,7 +95,7 @@
           toolResultPruner: true
         config:
           - id: compaction-tunable
-            name: '@local/dsh-compaction-tunable/engine'
+            name: '@codemody/dsh-compaction-tunable/engine'
           - id: command-compact
             name: '@deepseek-ai/dsh-command-compact'
           - id: tool-result-pruner
@@ -222,7 +222,7 @@
           toolResultPruner: true
         config:
           - id: compaction-tunable
-            name: '@local/dsh-compaction-tunable/engine'
+            name: '@codemody/dsh-compaction-tunable/engine'
           - id: command-compact
             name: '@deepseek-ai/dsh-command-compact'
           - id: tool-result-pruner
@@ -307,7 +307,7 @@
           compaction: true
         config:
           - id: compaction-tunable
-            name: '@local/dsh-compaction-tunable/engine'
+            name: '@codemody/dsh-compaction-tunable/engine'
           - id: command-compact
             name: '@deepseek-ai/dsh-command-compact'
       - id: persistent-shell
@@ -426,7 +426,7 @@
           toolResultPruner: true
         config:
           - id: compaction-tunable
-            name: '@local/dsh-compaction-tunable/engine'
+            name: '@codemody/dsh-compaction-tunable/engine'
           - id: command-compact
             name: '@deepseek-ai/dsh-command-compact'
           - id: tool-result-pruner

@@ -10,11 +10,12 @@ compaction starts instead of accepting the shipped default.
 In DSH, install this repo as a plugin bundle — full CLI command:
 
 ```
-dsh plugin --profile desktop add github:CodeMody/dsh-compaction-tunable
+dsh plugin --profile desktop add @codemody/dsh-compaction-tunable
 ```
 
-Or paste `github:CodeMody/dsh-compaction-tunable` into the Plugins manager's
-install field (works exactly like other `github:`-sourced bundles). DSH pulls
+Or paste `@codemody/dsh-compaction-tunable` (npm) or
+`github:CodeMody/dsh-compaction-tunable` (source) into the Plugins manager's
+install field. DSH pulls
 it via pnpm into the profile's `node_modules` — no app restart needed.
 The plugin card appears under **Plugins** with its settings page, and each **new**
 session picks the engine up (a session that is already open keeps the preset
@@ -61,7 +62,7 @@ not a constant: a profile that raises `maxTokens` to 65536 starts much earlier �
    the running service updates in place.
 2. Re-declares every shipped agent preset (`standard`, `ptc`, `minimal`, `cordis`)
    with its exact child list, replacing `compaction-basic` with
-   `@local/dsh-compaction-tunable/engine`. The engine must live inside each
+   `@codemody/dsh-compaction-tunable/engine`. The engine must live inside each
    preset's own `compaction` isolate group: host rows never reach the agent tree,
    and a patch override replaces the whole row config, so each list is restated.
 3. The engine subclasses the shipped `BasicCompactionEngine` and builds its policy
