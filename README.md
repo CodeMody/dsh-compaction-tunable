@@ -35,8 +35,11 @@ For `W = 204800`, `O = 32768`: `min(163840, 106496) = 106496` — the ~100k trig
 1. Inserts a root row `compaction-policy` (this package) whose Config is entirely
    **volatile**: the Settings form writes it through the normal profile patch and
    the running service updates in place.
-2. Re-declares the shipped `standard` preset with its exact child list, replacing
-   `compaction-basic` with `@local/dsh-compaction-tunable/engine`.
+2. Re-declares every shipped agent preset (`standard`, `ptc`, `minimal`, `cordis`)
+   with its exact child list, replacing `compaction-basic` with
+   `@local/dsh-compaction-tunable/engine`. The engine must live inside each
+   preset's own `compaction` isolate group: host rows never reach the agent tree,
+   and a patch override replaces the whole row config, so each list is restated.
 3. The engine subclasses the shipped `BasicCompactionEngine` and builds its policy
    from `ctx.compactionPolicy` on every pressure check. An absolute trigger is
    converted to a headroom per routed model:
@@ -72,9 +75,14 @@ compaction-tunable: strata/Qwen3.8-flash-next starts compaction at ~155648 token
 
 ## Scope and removal
 
-- Controls the **Standard** preset. Other presets keep their shipped policy.
+- Controls all four shipped presets: `standard`, `ptc`, `minimal`, and `cordis`.
+  A preset you author yourself in the Web editor keeps the shipped basic engine
+  until a bundle update restates it too.
 - To uninstall, use **Plugins → Auto-compaction trigger bundle → uninstall** (or
   `plugin_manager` `remove_bundle`). The profile then returns to the shipped
   preset and the default 65,536-token headroom.
-- The preset copy is pinned to DSH `0.2.2-rc.1`. After a DSH upgrade that changes
-  `standard.patch.yml`, reinstall an updated copy to pick up new preset plugins.
+- The preset copies are pinned to DSH `0.2.2-rc.1`. After a DSH upgrade that
+  changes the preset lists, update the bundle to pick up new preset plugins.
+  `preset-cordis` additionally pins its `skill-filesystem` skills directory to
+  the installed app's `app.asar` path (the shipped `!!js` expression resolves
+  relative to the web-app patch layer only).

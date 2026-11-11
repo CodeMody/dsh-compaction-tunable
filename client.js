@@ -38,7 +38,7 @@ window.__ModuleLoader__.load({
       saveFailed: 'The profile did not accept these values.',
       unavailable: 'The compaction policy plugin is not loaded in this profile.',
       loading: 'Loading the current policy…',
-      appliesLater: 'Applies to new sessions created with the Standard preset.',
+      appliesLater: 'Applies to new sessions in every agent preset.',
     }
 
     const de = {
@@ -71,7 +71,7 @@ window.__ModuleLoader__.load({
       saveFailed: 'Das Profil hat diese Werte nicht übernommen.',
       unavailable: 'Das Kompaktierungs-Plugin ist in diesem Profil nicht geladen.',
       loading: 'Aktuelle Richtlinie wird geladen…',
-      appliesLater: 'Gilt für neue Sitzungen mit dem Standard-Preset.',
+      appliesLater: 'Gilt für neue Sitzungen in jedem Agent-Preset.',
     }
 
     const zh = {
@@ -102,7 +102,7 @@ window.__ModuleLoader__.load({
       saveFailed: '配置文件没有接受这些值。',
       unavailable: '此配置文件中未加载压缩策略插件。',
       loading: '正在读取当前策略…',
-      appliesLater: '对使用 Standard 预设新建的会话生效。',
+      appliesLater: '对任意预设下新建的会话生效。',
     }
 
     const S = {
