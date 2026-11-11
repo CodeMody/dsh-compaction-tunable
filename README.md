@@ -48,7 +48,10 @@ not the preset-owned engine. The preset keeps the default policy:
 trigger = floor(min(W × 0.8, W − O − 65536))
 ```
 
-For `W = 204800`, `O = 32768`: `min(163840, 106496) = 106496` — the ~100k trigger.
+For `W = 204800` with the default `O = 32768`: `min(163840, 106496) = 106496` — the
+~100k trigger. But `O` is the routed model's output reservation (its `maxTokens`),
+not a constant: a profile that raises `maxTokens` to 65536 starts much earlier —
+`min(163840, 204800 − 65536 − 65536) = 73728`, so compaction fires around 73k.
 
 ## What this bundle does
 
@@ -72,6 +75,11 @@ For `W = 204800`, `O = 32768`: `min(163840, 106496) = 106496` — the ~100k trig
 
    If `triggerTokens` is `0` or the token mode is off, the window-fraction fields
    (`thresholdRatio`, `headroomTokens`) are used instead.
+
+   Because `budget` subtracts the routed model's output reservation, the start point
+   can never sit above `contextWindow − maxTokens`: with a 65536-token reservation
+   the default `155648` clamps to `139263`. Lower the model's `maxTokens` (e.g. to
+   `32768`) in your LLM settings if you want the full trigger.
 
 ## Use
 
