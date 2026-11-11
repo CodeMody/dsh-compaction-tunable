@@ -5,6 +5,26 @@ A DSH profile bundle that adds a **Plugins → Auto-compaction trigger** setting
 page, so you can choose the input-token level at which automatic context
 compaction starts instead of accepting the shipped default.
 
+## Install
+
+In DSH, install this repo as a plugin bundle (it works exactly like other
+`github:`-sourced bundles):
+
+```
+github:CodeMody/dsh-compaction-tunable
+```
+
+DSH pulls it via pnpm into the profile's `node_modules` — no app restart needed.
+The plugin card appears under **Plugins** with its settings page, and each **new**
+session picks the engine up (a session that is already open keeps the preset
+revision it started with). Disabling or removing the bundle returns every preset
+to its shipped compaction defaults again.
+
+> **Note:** this bundle restates DSH's own agent presets, and its copies are pinned
+> to DSH `0.2.2-rc.1`. After a DSH app update, update this bundle too, so the
+> restated preset lists stay in step with the shipped ones — see
+> [Scope and removal](#scope-and-removal).
+
 ## Why the YAML override did not work
 
 The Web app composes agents behind **agent presets**. `dsh-web-app` disables the
