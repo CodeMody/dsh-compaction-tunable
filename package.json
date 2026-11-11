@@ -3,6 +3,21 @@
   "version": "1.1.2",
   "private": true,
   "description": "Choose when DSH starts automatic context compaction, with a settings page under Plugins.",
+  "license": "MIT",
+  "author": "CodeMody",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeMody/dsh-compaction-tunable.git"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "compaction",
+    "context",
+    "memory",
+    "settings"
+  ],
   "type": "module",
   "exports": {
     ".": "./index.js",

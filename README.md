@@ -7,14 +7,15 @@ compaction starts instead of accepting the shipped default.
 
 ## Install
 
-In DSH, install this repo as a plugin bundle (it works exactly like other
-`github:`-sourced bundles):
+In DSH, install this repo as a plugin bundle — full CLI command:
 
 ```
-github:CodeMody/dsh-compaction-tunable
+dsh plugin --profile desktop add github:CodeMody/dsh-compaction-tunable
 ```
 
-DSH pulls it via pnpm into the profile's `node_modules` — no app restart needed.
+Or paste `github:CodeMody/dsh-compaction-tunable` into the Plugins manager's
+install field (works exactly like other `github:`-sourced bundles). DSH pulls
+it via pnpm into the profile's `node_modules` — no app restart needed.
 The plugin card appears under **Plugins** with its settings page, and each **new**
 session picks the engine up (a session that is already open keeps the preset
 revision it started with). Disabling or removing the bundle returns every preset
@@ -114,3 +115,12 @@ compaction-tunable: strata/Qwen3.8-flash-next starts compaction at ~155648 token
   `preset-cordis` additionally pins its `skill-filesystem` skills directory to
   the installed app's `app.asar` path (the shipped `!!js` expression resolves
   relative to the web-app patch layer only).
+
+## Compatibility
+
+- **DSH:** `0.2.2-rc.1` — the restated preset copies are pinned to this
+  revision (see [Scope and removal](#scope-and-removal)); Windows `desktop`
+  profile.
+- **Runtime:** settings are volatile — saving applies in place, no app
+  restart; sessions started afterwards pick the new threshold up.
+- **License:** MIT ([LICENSE](LICENSE)).
