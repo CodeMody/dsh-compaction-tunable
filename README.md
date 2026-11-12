@@ -7,10 +7,11 @@ compaction starts instead of accepting the shipped default.
 
 ## Install
 
-In DSH, install this repo as a plugin bundle — full CLI command:
+In DSH, install this repo as a plugin bundle — full CLI command (desktop app or web app):
 
 ```
 dsh plugin --profile desktop add @codemody/dsh-compaction-tunable
+dsh plugin --profile web add @codemody/dsh-compaction-tunable
 ```
 
 Or paste `@codemody/dsh-compaction-tunable` (npm) or
@@ -120,8 +121,9 @@ compaction-tunable: strata/Qwen3.8-flash-next starts compaction at ~155648 token
 ## Compatibility
 
 - **DSH:** `0.2.2-rc.1` — the restated preset copies are pinned to this
-  revision (see [Scope and removal](#scope-and-removal)); Windows `desktop`
-  profile.
+  revision (see [Scope and removal](#scope-and-removal)). Installs into any
+  profile (`desktop` or `web`): the patch resolves everything through package
+  exports and contains no profile-specific paths.
 - **Runtime:** settings are volatile — saving applies in place, no app
   restart; sessions started afterwards pick the new threshold up.
 - **License:** MIT ([LICENSE](LICENSE)).
