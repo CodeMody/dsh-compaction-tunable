@@ -16,9 +16,8 @@ dsh plugin --profile desktop add @codemody/dsh-compaction-tunable
 dsh plugin --profile web add @codemody/dsh-compaction-tunable
 ```
 
-Or paste `@codemody/dsh-compaction-tunable` (npm) or
-`github:CodeMody/dsh-compaction-tunable` (source) into the Plugins manager's
-install field. DSH pulls
+Or paste the package name `@codemody/dsh-compaction-tunable` into the Plugins
+manager's install field. DSH pulls
 it via pnpm into the profile's `node_modules` — no app restart needed.
 The plugin card appears under **Plugins** with its settings page, and each **new**
 session picks the engine up (a session that is already open keeps the preset
