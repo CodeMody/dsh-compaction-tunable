@@ -14,7 +14,7 @@
 #
 # Agent presets are only replaceable as a whole: a patch override replaces the
 # complete row config, never deep-merges, so each shipped list is restated
-# verbatim (DSH 0.2.2-rc.1: standard 1, ptc 2, minimal 3, cordis 4). When DSH
+# verbatim (DSH 0.2.2-rc.3: standard 1, ptc 2, minimal 3, cordis 4). When DSH
 # ships a new or changed preset, refresh its block here. `preset-cordis` pins
 # skill-filesystem's `customSkillDirs` to a literal path: the shipped value is
 # a `!!js` expression keyed on `baseUrl`, which the Loader resolves relative to
@@ -60,6 +60,12 @@
         name: '@deepseek-ai/dsh-tool-schedule'
       - id: skill-filesystem
         name: '@deepseek-ai/dsh-skill-filesystem'
+        config:
+          # Literal copy of the shipped `!!js ... createRequire(baseUrl) ...`
+          # skills path, pinned so this profile-bundle patch layer resolves it
+          # against this DSH install instead of its own baseUrl. See preset-cordis.
+          customSkillDirs:
+            - 'C:\Users\CodeMody Laptop\AppData\Local\Programs\DeepSeek Harness\resources\app.asar\dsh\node_modules\@deepseek-ai\dsh-agent-preset\skills'
       - id: tool-skill
         name: '@deepseek-ai/dsh-tool-skill'
       - id: command-goal
@@ -112,6 +118,8 @@
         config:
           - id: tool-subagent-control
             name: '@deepseek-ai/dsh-tool-subagent-control'
+            config:
+              interrupt: false
           - id: tool-subagent
             name: '@deepseek-ai/dsh-tool-subagent'
             config:
@@ -143,6 +151,8 @@
           searchTimeoutMs: 60000
       - id: present
         name: '@deepseek-ai/dsh-tool-present'
+      - id: tool-office
+        name: '@deepseek-ai/dsh-tool-office'
       - id: tool-plugin-manager
         name: '@deepseek-ai/dsh-plugin-manager/tools'
         disabled: !!js "!ctx.get('profileContext')"
@@ -239,6 +249,8 @@
         config:
           - id: tool-subagent-control
             name: '@deepseek-ai/dsh-tool-subagent-control'
+            config:
+              interrupt: false
           - id: tool-subagent
             name: '@deepseek-ai/dsh-tool-subagent'
             config:
@@ -274,6 +286,8 @@
         name: '@deepseek-ai/dsh-tool-executor-ptc'
       - id: present
         name: '@deepseek-ai/dsh-tool-present'
+      - id: tool-office
+        name: '@deepseek-ai/dsh-tool-office'
       - id: tool-plugin-manager
         name: '@deepseek-ai/dsh-plugin-manager/tools'
         disabled: true
@@ -367,7 +381,7 @@
       - id: persona
         name: '@deepseek-ai/dsh-persona'
         config:
-          prefix: You are a coding agent powered by the {{model}} model.
+          prefix: You are a coding agent powered by the {{model}} model. You help the user customize DeepSeek Harness itself.
       - id: agent-instructions
         name: '@deepseek-ai/dsh-agent-instructions'
         config:
@@ -443,6 +457,8 @@
         config:
           - id: tool-subagent-control
             name: '@deepseek-ai/dsh-tool-subagent-control'
+            config:
+              interrupt: false
           - id: tool-subagent
             name: '@deepseek-ai/dsh-tool-subagent'
             config:
