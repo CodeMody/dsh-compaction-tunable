@@ -1,5 +1,7 @@
 # Auto-compaction trigger
 
+[![npm version](https://img.shields.io/npm/v/@codemody/dsh-compaction-tunable.svg?style=flat)](https://www.npmjs.com/package/@codemody/dsh-compaction-tunable)
+![Targets DSH 0.2.2-rc.3](https://img.shields.io/badge/DSH-0.2.2--rc.3-4C6EF5.svg)
 
 A DSH profile bundle that adds a **Plugins → Auto-compaction trigger** settings
 page, so you can choose the input-token level at which automatic context
@@ -24,7 +26,7 @@ revision it started with). Disabling or removing the bundle returns every preset
 to its shipped compaction defaults again.
 
 > **Note:** this bundle restates DSH's own agent presets, and its copies are pinned
-> to DSH `0.2.2-rc.1`. After a DSH app update, update this bundle too, so the
+> to DSH `0.2.2-rc.3`. After a DSH app update, update this bundle too, so the
 > restated preset lists stay in step with the shipped ones — see
 > [Scope and removal](#scope-and-removal).
 
@@ -112,7 +114,7 @@ compaction-tunable: strata/Qwen3.8-flash-next starts compaction at ~155648 token
 - To uninstall, use **Plugins → Auto-compaction trigger bundle → uninstall** (or
   `plugin_manager` `remove_bundle`). The profile then returns to the shipped
   preset and the default 65,536-token headroom.
-- The preset copies are pinned to DSH `0.2.2-rc.1`. After a DSH upgrade that
+- The preset copies are pinned to DSH `0.2.2-rc.3`. After a DSH upgrade that
   changes the preset lists, update the bundle to pick up new preset plugins.
   `preset-cordis` additionally pins its `skill-filesystem` skills directory to
   the installed app's `app.asar` path (the shipped `!!js` expression resolves
@@ -120,7 +122,7 @@ compaction-tunable: strata/Qwen3.8-flash-next starts compaction at ~155648 token
 
 ## Compatibility
 
-- **DSH:** `0.2.2-rc.1` — the restated preset copies are pinned to this
+- **DSH:** `0.2.2-rc.3` — the restated preset copies are pinned to this
   revision (see [Scope and removal](#scope-and-removal)). Installs into any
   profile (`desktop` or `web`): the patch resolves everything through package
   exports and contains no profile-specific paths.
